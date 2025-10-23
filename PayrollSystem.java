@@ -27,4 +27,10 @@ class PayrollSystem {
         }
     }
 
+    public void displayAllEmployees() {
+        for (Employee employee : employeeList) {
+            System.out.println(employee);
+        }
+    }
+
 }
