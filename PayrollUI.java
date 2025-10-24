@@ -1,10 +1,5 @@
 import javax.swing.*;
 
-import employee.Employee;
-import employee.FullTimeEmployee;
-import employee.PartTimeEmployee;
-import employee.PayrollSystem;
-
 import java.awt.*;
 
 public class PayrollUI extends JFrame {
