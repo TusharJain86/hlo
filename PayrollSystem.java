@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import employee.Employee;
+
 class PayrollSystem {
     private ArrayList<Employee> employeeList;
 
