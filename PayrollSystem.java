@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 class PayrollSystem {
     private ArrayList<Employee> employeeList;
 
@@ -21,7 +20,7 @@ class PayrollSystem {
             }
         }
         
-        if(employeeToRemove != null) {
+        if (employeeToRemove != null) {
             employeeList.remove(employeeToRemove);
         }
     }
@@ -32,4 +31,8 @@ class PayrollSystem {
         }
     }
 
+    // ✅ FIXED: Implemented this method properly
+    public ArrayList<Employee> getEmployeeList() {
+        return employeeList;
+    }
 }
