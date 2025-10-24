@@ -1,5 +1,3 @@
-import employee.Employee;
-
 class FullTimeEmployee extends Employee{
     private double monthlySalary;
 
