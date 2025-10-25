@@ -1,5 +1,4 @@
 import javax.swing.*;
-
 import java.awt.*;
 
 public class PayrollUI extends JFrame {
@@ -13,15 +12,18 @@ public class PayrollUI extends JFrame {
     public PayrollUI() {
         payrollSystem = new PayrollSystem();
 
+        // ======== FRAME SETTINGS ========
         setTitle("Payroll System");
         setSize(600, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout(10, 10));
+        getContentPane().setBackground(new Color(245, 245, 245)); // Light gray
 
         // ======== TOP PANEL (Form) ========
         JPanel inputPanel = new JPanel(new GridLayout(7, 2, 5, 5));
         inputPanel.setBorder(BorderFactory.createTitledBorder("Add Employee"));
+        inputPanel.setBackground(new Color(220, 235, 255)); // Light blue
 
         employeeTypeBox = new JComboBox<>(new String[]{"Full-Time", "Part-Time"});
         nameField = new JTextField();
@@ -30,23 +32,38 @@ public class PayrollUI extends JFrame {
         hoursField = new JTextField();
         rateField = new JTextField();
 
-        inputPanel.add(new JLabel("Employee Type:"));
-        inputPanel.add(employeeTypeBox);
-        inputPanel.add(new JLabel("Name:"));
-        inputPanel.add(nameField);
-        inputPanel.add(new JLabel("ID:"));
-        inputPanel.add(idField);
-        inputPanel.add(new JLabel("Monthly Salary (for Full-Time):"));
-        inputPanel.add(salaryField);
-        inputPanel.add(new JLabel("Hours Worked (for Part-Time):"));
-        inputPanel.add(hoursField);
-        inputPanel.add(new JLabel("Hourly Rate (for Part-Time):"));
-        inputPanel.add(rateField);
+        JTextField[] textFields = {nameField, idField, salaryField, hoursField, rateField};
+        for (JTextField field : textFields) {
+            field.setBackground(Color.WHITE);
+            field.setForeground(Color.DARK_GRAY);
+        }
+
+        JLabel[] labels = {
+            new JLabel("Employee Type:"), new JLabel("Name:"), new JLabel("ID:"),
+            new JLabel("Monthly Salary (for Full-Time):"),
+            new JLabel("Hours Worked (for Part-Time):"),
+            new JLabel("Hourly Rate (for Part-Time):")
+        };
+        for (JLabel label : labels) {
+            label.setForeground(new Color(50, 50, 50)); // Dark gray
+        }
+
+        inputPanel.add(labels[0]); inputPanel.add(employeeTypeBox);
+        inputPanel.add(labels[1]); inputPanel.add(nameField);
+        inputPanel.add(labels[2]); inputPanel.add(idField);
+        inputPanel.add(labels[3]); inputPanel.add(salaryField);
+        inputPanel.add(labels[4]); inputPanel.add(hoursField);
+        inputPanel.add(labels[5]); inputPanel.add(rateField);
 
         JButton addButton = new JButton("Add Employee");
-        inputPanel.add(addButton);
+        addButton.setBackground(new Color(76, 175, 80)); // Green
+        addButton.setForeground(Color.WHITE);
 
         JButton showButton = new JButton("Show All Employees");
+        showButton.setBackground(new Color(33, 150, 243)); // Blue
+        showButton.setForeground(Color.WHITE);
+
+        inputPanel.add(addButton);
         inputPanel.add(showButton);
 
         add(inputPanel, BorderLayout.NORTH);
@@ -54,15 +71,29 @@ public class PayrollUI extends JFrame {
         // ======== CENTER PANEL (Display) ========
         displayArea = new JTextArea();
         displayArea.setEditable(false);
+        displayArea.setBackground(Color.WHITE);
+        displayArea.setForeground(new Color(33, 33, 33)); // Dark text
+        displayArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
+
         add(new JScrollPane(displayArea), BorderLayout.CENTER);
 
         // ======== BOTTOM PANEL (Remove) ========
         JPanel removePanel = new JPanel(new FlowLayout());
         removePanel.setBorder(BorderFactory.createTitledBorder("Remove Employee"));
-        removePanel.add(new JLabel("Enter ID to Remove:"));
+        removePanel.setBackground(new Color(255, 230, 230)); // Light pink
+
+        JLabel removeLabel = new JLabel("Enter ID to Remove:");
+        removeLabel.setForeground(new Color(50, 50, 50));
+        removePanel.add(removeLabel);
+
         removeIdField = new JTextField(10);
+        removeIdField.setBackground(Color.WHITE);
+        removeIdField.setForeground(Color.DARK_GRAY);
         removePanel.add(removeIdField);
+
         JButton removeButton = new JButton("Remove");
+        removeButton.setBackground(new Color(244, 67, 54)); // Red
+        removeButton.setForeground(Color.WHITE);
         removePanel.add(removeButton);
 
         add(removePanel, BorderLayout.SOUTH);
